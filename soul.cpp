@@ -14,7 +14,7 @@
     #include <unistd.h>
 #endif
 
-#define PAYLOAD_SIZE 20
+#define PAYLOAD_SIZE 100
 class Attack {
 public:
     Attack(const std::string& ip, int port, int duration)
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
             perror("Thread creation failed");
             exit(1);
         }
-        std::cout << "Launched thread with ID: " << thread_ids[i] << "\n";
+        //std::cout << "Launched thread with ID: " << thread_ids[i] << "\n";
     }
 
     for (int i = 0; i < threads; i++) {

