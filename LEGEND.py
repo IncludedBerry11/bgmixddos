@@ -6,7 +6,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, ContextTypes, filters
 
 # Path to your binary
-BINARY_PATH = "./LEGEND"
+BINARY_PATH = "./soul"
 
 # Global variables
 process = None
