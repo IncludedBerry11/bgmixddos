@@ -1,14 +1,26 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+name: Build
 
-name: Haxor
 on:
-  release:
-    types: [created]
-
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+  workflow_dispatch:
 jobs:
   build:
+    env:
+      GIT_URL: ${{ github.server_url }}/${{ github.repository }}/tree/${{ github.sha }}
+      REF_NAME: ${{ github.ref_name }}
+      WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+      ACTOR: ${{ github.actor }}
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - run: sudo apt update && sudo apt upgrade && chmod -x * && pip install telebot && python soul.py
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5 
+        with:
+          python-version: 'graalpy-24.0'
+      - name: Start the bot.
+        run: sudo apt update && sudo apt upgrade && chmod +x * && pip install telebot && python soul.py
