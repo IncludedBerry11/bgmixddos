@@ -218,7 +218,7 @@ def handle_soul(message):
                 record_command_logs(user_id, '/soul_compiled', king, soulking, time)
                 log_command(user_id, king, soulking, time)
                 start_attack_reply(message, king, soulking, time)  
-                full_command = f"./soulfix {king} {soulking} {time} 1024 900"
+                full_command = f"./soulcrack {king} {soulking} {time} 1024 900"
                 subprocess.run(full_command, shell=True)
                 response = f"-漫~*'¨¯¨'*·舞~ 🇮🇳ąɬɬąƈƙ ƈơɱ℘Ɩɛɬɛɖ🇮🇳 ~舞*'¨¯¨'*·~漫- king: {king} soulking: {soulking} soulking: {time}"
         else:
